@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | PerfectJobAnalysis</title>
+  <link rel="stylesheet" href="static\dashboard.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="index.html" aria-label="PerfectJob Analysis home">
+      <span class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 40 40" focusable="false">
+          <path d="M20 2.5 35.2 11.3 35.2 28.7 20 37.5 4.8 28.7 4.8 11.3Z" />
+          <path d="M20 9 29.5 14.5 29.5 25.5 20 31 10.5 25.5 10.5 14.5Z" />
+        </svg>
+      </span>
+      <span class="brand-text">PerfectJob<span>Analysis</span></span>
+    </a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="{{ url_for('home') }}">Home</a>
+      <a class="active" href="{{ url_for('dashboard') }}">Dashboard</a>
+      <a href="{{ url_for('table') }}">Company</a>
+      <a href="{{url_for('about')}}">About</a>
+    </nav>
+  </header>
+
+  <main class="dashboard-wrap">
+    <div class="dashboard-content">
+    <section class="page-heading">
+      <div>
+        <p class="eyebrow">PERFECTJOBANALYSIS / INSIGHTS</p>
+        <h1>Job Market <span>Dashboard</span></h1>
+        <p class="subheading">Compare companies, ratings, industries and workforce sizes .</p>
+      </div>
+      <div class="updated-pill"><span></span> DATASET OVERVIEW</div>
+    </section>
+
+    <section class="kpi-grid" aria-label="Dataset summary">
+      <article class="kpi-card">
+        <div class="kpi-top"><span class="kpi-icon blue">▦</span><span class="kpi-tag">10 CITIES</span></div>
+        <p class="kpi-label">Company records</p>
+        <h2>{{cmpy_record}}</h2>
+        <p class="kpi-note">{{cmpy_record}} rows  </p>
+      </article>
+      <article class="kpi-card">
+        <div class="kpi-top"><span class="kpi-icon cyan">⌖</span><span class="kpi-tag">LOCATION</span></div>
+        <p class="kpi-label">Cities covered</p>
+        <h2>{{cmpy_unique}}</h2>
+        <p class="kpi-note">Citys</p>
+      </article>
+      <article class="kpi-card">
+        <div class="kpi-top"><span class="kpi-icon purple">★</span><span class="kpi-tag">OUT OF 5</span></div>
+        <p class="kpi-label">Average company rating</p>
+        <h2>{{cmpy_rating}}<span class="small-unit">/ 5</span></h2>
+        <p class="kpi-note">Across non-missing ratings average</p>
+      </article>
+      <article class="kpi-card">
+        <div class="kpi-top"><span class="kpi-icon pink">✓</span><span class="kpi-tag">DATA QUALITY</span></div>
+        <p class="kpi-label">Ratings available</p>
+        <h2>{{cmpy_rating_avlable}}<span class="small-unit">%</span></h2>
+        <p class="kpi-note">56,071 of 56,071 rows have a rating</p>
+      </article>
+    </section>
+
+    <div class="section-title">
+      <div><p class="eyebrow">VISUAL ANALYSIS</p><h2>Explore the market</h2></div>
+      <p class="section-caption">Replace each placeholder with your own chart image or embedded seaborn and matplotlib.</p>
+    </div>
+
+    <section class="charts-grid">
+      <article class="chart-card chart-large">
+        <div class="chart-header"><div><span class="chart-index">01</span><h3>Company Rating Comparison by Company type</h3></div><span class="chart-type">Clustered column chart</span></div>
+        <p class="chart-description">Compare the average company rating in each Company type.</p>
+        <div class="chart-placeholder">
+          <img src="data:image/png;base64,{{ plot_url1 }}" alt="Seaborn Plot">
+        </div>
+      </article>
+
+      <article class="chart-card">
+        <div class="chart-header"><div><span class="chart-index">02</span><h3>Rating Distribution</h3></div><span class="chart-type">Horizontal bar</span></div>
+        <p class="chart-description">See how many rating each rating range.</p>
+        <div class="chart-placeholder compact">
+          <img src="data:image/png;base64,{{ plot_url2 }}" alt="Seaborn Plot">
+        </div>
+      </article>
+
+      <article class="chart-card">
+        <div class="chart-header"><div><span class="chart-index">03</span><h3>Top 10 Industries by Number of Companies</h3></div><span class="chart-type">vartical bar</span></div>
+        <p class="chart-description">Top 10 Industries by Number of Companies.</p>
+        <div class="chart-placeholder compact">
+          <img src="data:image/png;base64,{{ plot_url3 }}" alt="Seaborn Plot">
+        </div>
+      </article>
+
+      <article class="chart-card">
+        <div class="chart-header"><div><span class="chart-index">04</span><h3>Company Distribution by Employee Size</h3></div><span class="chart-type">vartical bar</span></div>
+        <p class="chart-description">Company Distribution by Employee Size.</p>
+        <div class="chart-placeholder compact">
+          <img src="data:image/png;base64,{{ plot_url4 }}" alt="Seaborn Plot">
+        </div>
+      </article>
+
+      <article class="chart-card">
+        <div class="chart-header"><div><span class="chart-index">05</span><h3>Top 10 Locations by Number of Companies</h3></div><span class="chart-type">vartical bar</span></div>
+        <p class="chart-description">Top 10 Locations by Number of Companies.</p>
+        <div class="chart-placeholder compact">
+          <img src="data:image/png;base64,{{ plot_url5 }}" alt="Seaborn Plot">
+        </div>
+      </article>
+
+
+
+    <section class="insight-row">
+      <div class="insight-card">
+        <span class="insight-mark">i</span>
+        <div><h3>What your dataset contains</h3><p>Both CSV files include company name, company rating and a text field with industry, employee range, ownership/recognition, company age and city information. The chart recommendations above use these fields.</p></div>
+      </div>
+      <div class="insight-card caution">
+        <span class="insight-mark">!</span>
+        <div><h3>Before building the charts</h3><p>Extract industry, employee size and company age from <code>other_data</code>. Remove the <code>Unnamed: 0</code> index column, check duplicate companies, and handle missing ratings. These CSVs list companies, not individual job vacancies, so avoid labeling the row count as “jobs available.”</p></div>
+      </div>
+    </section>
+    <footer class="footer"><span>© 2026 PerfectJobAnalysis</span><span>Company insights for smarter career decisions</span></footer>
+    </div>
+
+    <aside class="dashboard-filter-panel">
+      <div class="filter-heading">
+        <h2>Filters</h2>
+       <button type="reset" form="filters-form">Clear</button>
+       <button type="submit" form="filters-form">remove filter</button>
+      </div>
+
+      <form id="filters-form" method="get" action="{{ url_for('dashboard') }}">
+        <label for="company-search">Search company</label>
+        <input id="company-search" type="search" placeholder="Enter company name" name="cmpy">
+
+        <label for="industry">Industry</label>
+        <select id="industry" name="industry">
+          <option value="All industries">All industries</option>
+          <option value="Accounting & Auditing">Accounting & Auditing</option>
+          <option value="Agriculture">Agriculture</option>
+          <option value="Agro Chemicals">Agro Chemicals</option>
+          <option value="Analytics & KPO">Analytics & KPO</option>
+          <option value="Animation & VFX">Animation & VFX</option>
+          <option value="Architecture & Interior Design">Architecture & Interior Design</option>
+          <option value="Auto Components">Auto Components</option>
+          <option value="Automobile">Automobile</option>
+          <option value="Aviation">Aviation</option>
+          <option value="Banking">Banking</option>
+          <option value="Beauty & Personal Care">Beauty & Personal Care</option>
+          <option value="Beverage">Beverage</option>
+          <option value="Biotechnology">Biotechnology</option>
+          <option value="BPO">BPO</option>
+          <option value="Broadcasting">Broadcasting</option>
+          <option value="Building Material">Building Material</option>
+          <option value="Chemicals">Chemicals</option>
+          <option value="Chemicals / Agri Inputs">Chemicals / Agri Inputs</option>
+          <option value="Clinical Research">Clinical Research</option>
+          <option value="Computer Software">Computer Software</option>
+          <option value="Consumer Electronics & Appliances">Consumer Electronics & Appliances</option>
+          <option value="Content Development">Content Development</option>
+          <option value="Defence & Aerospace">Defence & Aerospace</option>
+          <option value="Design">Design</option>
+          <option value="EdTech">EdTech</option>
+          <option value="Education & Training">Education & Training</option>
+          <option value="Electrical Equipment">Electrical Equipment</option>
+          <option value="Electronics Manufacturing">Electronics Manufacturing</option>
+          <option value="Emerging Technologies">Emerging Technologies</option>
+          <option value="Engineering & Construction">Engineering & Construction</option>
+          <option value="Events">Events</option>
+          <option value="Facility Management Services">Facility Management Services</option>
+          <option value="Fashion & Textile">Fashion & Textile</option>
+          <option value="Financial Services">Financial Services</option>
+          <option value="FinTech">FinTech</option>
+          <option value="Fitness & Wellness">Fitness & Wellness</option>
+          <option value="FMCG">FMCG</option>
+          <option value="Food Processing">Food Processing</option>
+          <option value="Furniture & Furnishing">Furniture & Furnishing</option>
+          <option value="Gaming">Gaming</option>
+          <option value="Hardware & Networking">Hardware & Networking</option>
+          <option value="Healthcare">Healthcare</option>
+          <option value="Hospitality">Hospitality</option>
+          <option value="Import & Export">Import & Export</option>
+          <option value="Industrial Automation">Industrial Automation</option>
+          <option value="Industrial Machinery">Industrial Machinery</option>
+          <option value="Insurance">Insurance</option>
+          <option value="Internet">Internet</option>
+          <option value="Investment Banking / Venture Capital / Private Equity">Investment Banking / Venture Capital / Private Equity</option>
+          <option value="Iron & Steel">Iron & Steel</option>
+          <option value="IT Services & Consulting">IT Services & Consulting</option>
+          <option value="Jewellery">Jewellery</option>
+          <option value="Law Enforcement & Security">Law Enforcement & Security</option>
+          <option value="Leather">Leather</option>
+          <option value="Legal">Legal</option>
+          <option value="Logistics">Logistics</option>
+          <option value="Management Consulting">Management Consulting</option>
+          <option value="Marketing & Advertising">Marketing & Advertising</option>
+          <option value="Media & Entertainment">Media & Entertainment</option>
+          <option value="Medical Equipment">Medical Equipment</option>
+          <option value="Metals & Mining">Metals & Mining</option>
+          <option value="NBFC">NBFC</option>
+          <option value="Non-Profit">Non-Profit</option>
+          <option value="Oil & Gas">Oil & Gas</option>
+          <option value="Packaging">Packaging</option>
+          <option value="Petrochemicals">Petrochemicals</option>
+          <option value="Pharma">Pharma</option>
+          <option value="Ports & Shipping">Ports & Shipping</option>
+          <option value="Power">Power</option>
+          <option value="Printing & Publishing">Printing & Publishing</option>
+          <option value="Pulp & Paper">Pulp & Paper</option>
+          <option value="Railways">Railways</option>
+          <option value="Real Estate">Real Estate</option>
+          <option value="Recruitment">Recruitment</option>
+          <option value="Retail">Retail</option>
+          <option value="Semiconductors">Semiconductors</option>
+          <option value="Software Product">Software Product</option>
+          <option value="Sports & Recreation">Sports & Recreation</option>
+          <option value="Telecom">Telecom</option>
+          <option value="Travel & Tourism">Travel & Tourism</option>
+          <option value="Urban Transport">Urban Transport</option>
+          <option value="Waste Management">Waste Management</option>
+          <option value="other">Other</option>
+        </select>
+
+        <label for="location">Location / City</label>
+        <select id="location" name="location">
+          <option value="All locations">All locations</option>
+          <option value="mumbai">Mumbai</option>
+          <option value="hyderabad">Hyderabad</option>
+          <option value="chennai">Chennai</option>
+          <option value="ahmedabad">Ahmedabad</option>
+          <option value="indore">Indore</option>
+          <option value="noida">Noida</option>
+          <option value="jaipur">Jaipur</option>
+          <option value="pune">Pune</option>
+          <option value="new delhi">New Delhi</option>
+          <option value="bengaluru">Bengaluru</option>
+          <option value="gurugram">Gurugram</option>
+          <option value="kolkata">Kolkata</option>
+        </select>
+
+        <label for="company-type">Company type</label>
+        <select id="company-type" name="company_type">
+          <option value="All company types">All company types</option>
+          <option value="public">Public</option>
+          <option value="startup">Startup</option>
+          <option value="forbes global 2000">Forbes Global 2000</option>
+          <option value="fortune india 500">Fortune India 500</option>
+          <option value="conglomerate">Conglomerate</option>
+          <option value="indian unicorn">Indian Unicorn</option>
+          <option value="mnc">MNC</option>
+          <option value="central">Central</option>
+          <option value="state">State</option>
+          <option value="government">Government</option>
+          <option value="government, central">Government, Central</option>
+          <option value="government, public">Government, Public</option>
+          <option value="government, state">Government, State</option>
+          <option value="government, startup">Government, Startup</option>
+          <option value="other">Other</option>
+        </select>
+
+        <label>Rating</label>
+        <div class="range-fields">
+          <input type="number" min="0" max="5" step="0.1" placeholder="Min" name="min_rating">
+          <input type="number" min="0" max="5" step="0.1" placeholder="Max" name="max_rating">
+        </div>
+
+        <label for="employee-size">Employee size</label>
+        <select id="employee-size" name="employee_size">
+          <option value="All sizes">All sizes</option>
+          <option value="1-10">1-10</option>
+          <option value="11-50">11-50</option>
+          <option value="51-200">51-200</option>
+          <option value="201-500">201-500</option>
+          <option value="501-1k">501-1k</option>
+          <option value="1k-5k">1k-5k</option>
+          <option value="5k-10k">5k-10k</option>
+          <option value="10k-50k">10k-50k</option>
+          <option value="50k-1 Lakh">50k-1 Lakh</option>
+          <option value="1 Lakh+">1 Lakh+</option>
+        </select>
+
+        <label>Company age (years)</label>
+        <div class="range-fields">
+          <input type="number" min="0" placeholder="Min age" name="min_age">
+          <input type="number" min="0" placeholder="Max age" name="max_age">
+        </div>
+
+        <button class="apply-button" type="submit">Apply filters</button>
+      </form>
+      <p class="note">This is a static HTML/CSS layout. Connect your data and add JavaScript to make filters work.</p>
+    </aside>
+  </main>
+</body>
+</html>

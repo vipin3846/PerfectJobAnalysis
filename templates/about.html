@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About | PerfectJobAnalysis</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='about.css') }}">
+</head>
+<body>
+
+    <!-- Header -->
+    <header class="header">
+        <div class="logo">Perfect<span>JobAnalysis</span></div>
+
+        <nav class="navbar">
+            <a href="{{ url_for('home') }}">Home</a>
+            <a href="{{ url_for('dashboard') }}">Dashboard</a>
+            <a href="{{ url_for('table') }}">Company</a>
+            <a href="{{ url_for('about') }}" class="active">About</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="tagline">ABOUT OUR PROJECT</p>
+            <h1>Turn Job Market Data Into <span>Meaningful Insights</span></h1>
+            <p>
+                PerfectJobAnalysis is a data analytics web application designed
+                to explore company information, analyze job market data, and
+                present useful insights through interactive dashboards.
+            </p>
+            <a href="{{ url_for('dashboard') }}" class="btn">
+                Explore Dashboard
+            </a>
+        </div>
+
+        <div class="hero-card">
+            <div class="icon">📊</div>
+            <h3>Data-Driven Decisions</h3>
+            <p>
+                Transform raw company data into clear visual insights
+                for better understanding and analysis.
+            </p>
+        </div>
+    </section>
+
+    <!-- About Project -->
+    <section class="about-section">
+        <div class="section-heading">
+            <p class="tagline">WHO WE ARE</p>
+            <h2>About PerfectJobAnalysis</h2>
+            <p>
+                A data analytics project that combines Python, data processing,
+                visualization, and web development.
+            </p>
+        </div>
+
+        <div class="about-content">
+            <div class="about-box">
+                <h3>Our Objective</h3>
+                <p>
+                    The main objective of this project is to organize and
+                    analyze company-related data and make the results easier
+                    to understand through charts, tables, and filters.
+                </p>
+            </div>
+
+            <div class="about-box">
+                <h3>Our Approach</h3>
+                <p>
+                    We collect data from web sources, clean and process it
+                    using Pandas and NumPy, and use Flask to connect the
+                    processed data with a website interface.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Workflow -->
+    <section class="workflow-section">
+        <div class="section-heading">
+            <p class="tagline">HOW IT WORKS</p>
+            <h2>Our Project Workflow</h2>
+        </div>
+
+        <div class="workflow-grid">
+            <div class="workflow-card">
+                <span>01</span>
+                <h3>Data Collection</h3>
+                <p>Collect company and job-related information from web sources.</p>
+            </div>
+
+            <div class="workflow-card">
+                <span>02</span>
+                <h3>Data Cleaning</h3>
+                <p>Use Pandas and NumPy to handle missing values and prepare data.</p>
+            </div>
+
+            <div class="workflow-card">
+                <span>03</span>
+                <h3>Data Visualization</h3>
+                <p>Create charts using Matplotlib and Seaborn to explore patterns.</p>
+            </div>
+
+            <div class="workflow-card">
+                <span>04</span>
+                <h3>Web Development</h3>
+                <p>Use Flask, HTML, and CSS to present data on a website.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technologies -->
+    <section class="technology-section">
+        <div class="section-heading">
+            <p class="tagline">OUR TOOLKIT</p>
+            <h2>Technologies Used</h2>
+        </div>
+
+        <div class="technology-list">
+            <span>Python</span>
+            <span>Pandas</span>
+            <span>NumPy</span>
+            <span>Flask</span>
+            <span>HTML5</span>
+            <span>CSS3</span>
+            <span>Matplotlib</span>
+            <span>Seaborn</span>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <h3>PerfectJobAnalysis</h3>
+        <p>Making company data easier to explore and understand.</p>
+        <p class="copyright">
+            &copy; 2026 PerfectJobAnalysis. All rights reserved.
+        </p>
+    </footer>
+
+</body>
+</html>
